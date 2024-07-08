@@ -1,11 +1,30 @@
+pub mod possible_helix_themes;
+
+use eyre::{Context, ContextCompat, Result};
+use possible_helix_themes::AVAILABLE_THEMES;
+use rand::prelude::*;
+use rand::thread_rng;
 use std::{
     fs::File,
     io::{Read, Write},
     path::Path,
 };
-
-use eyre::{Context, ContextCompat, Result};
 use toml_edit::{DocumentMut, Item, Value};
+
+pub fn validate_theme(theme: &str) -> bool {
+    possible_helix_themes::AVAILABLE_THEMES
+        .binary_search(&theme)
+        .is_ok()
+}
+
+pub fn select_random_theme() -> &'static str {
+    let mut rng = thread_rng();
+
+    AVAILABLE_THEMES
+        .choose(&mut rng)
+        .context("choosing random theme")
+        .unwrap()
+}
 
 pub fn change_helix_theme(config_path: impl AsRef<Path>, new_theme: &str) -> Result<()> {
     let config_file =
