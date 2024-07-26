@@ -1,4 +1,4 @@
-pub const AVAILABLE_THEMES: [&str; 135] = [
+pub const AVAILABLE_THEMES: [&str; 137] = [
     "acme",
     "adwaita-dark",
     "amberwood",
@@ -62,10 +62,12 @@ pub const AVAILABLE_THEMES: [&str; 135] = [
     "iroaseta",
     "jellybeans",
     "jetbrains_dark",
+    "kanagawa-dragon",
     "kanagawa",
     "kaolin-dark",
     "kaolin-light",
     "kaolin-valley-dark",
+    "licenses",
     "material_darker",
     "material_deep_ocean",
     "material_oceanic",
